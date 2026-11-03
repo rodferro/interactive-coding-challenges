@@ -15,8 +15,9 @@ class TestKnapsack(unittest.TestCase):
         total_weight = 8
         expected_value = 13
         results = knapsack.fill_knapsack(items, total_weight)
-        self.assertEqual(results[0].label, 'd')
-        self.assertEqual(results[1].label, 'b')
+        labels = [x.label for x in results]
+        self.assertIn('b', labels)
+        self.assertIn('d', labels)
         total_value = 0
         for item in results:
             total_value += item.value
